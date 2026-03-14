@@ -13,11 +13,13 @@ import { CartService } from '../../services/cart';
       <div class="container nav-content">
         <a routerLink="/" class="logo">📚 BookStore</a>
         <div class="nav-links">
-          <a routerLink="/books">Browse</a>
-          <a routerLink="/cart" class="cart-link">
-            🛒 Cart
-            <span class="badge" *ngIf="cartService.cartCount() > 0">{{ cartService.cartCount() }}</span>
-          </a>
+          <ng-container *ngIf="!authService.isAdmin()">
+            <a routerLink="/books">Browse</a>
+            <a routerLink="/cart" class="cart-link">
+              🛒 Cart
+              <span class="badge" *ngIf="cartService.cartCount() > 0">{{ cartService.cartCount() }}</span>
+            </a>
+          </ng-container>
           <ng-container *ngIf="!authService.isLoggedIn()">
             <a routerLink="/login" class="nav-btn">Login</a>
             <a routerLink="/register" class="nav-btn nav-btn-primary">Register</a>

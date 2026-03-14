@@ -26,7 +26,6 @@ import { Component } from '@angular/core';
               <li><a href="/login">Login</a></li>
               <li><a href="/register">Register</a></li>
               <li><a href="/profile">My Profile</a></li>
-              <li><a href="/admin/login">Admin</a></li>
             </ul>
           </div>
           <div class="footer-links-col">
