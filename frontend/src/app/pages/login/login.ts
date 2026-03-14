@@ -90,7 +90,14 @@ export class LoginComponent {
     }
 
     this.authService.login({ email: this.email, password: this.password }).subscribe({
-      next: () => this.router.navigate(['/']),
+      next: (res) => {
+        // If the user is an admin, redirect them to the admin dashboard.
+        if (res.user?.role === 'admin') {
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/']);
+        }
+      },
       error: (err) => {
         this.errorMsg = err.error?.error || 'Login failed. Please check your credentials.';
         this.loading = false;
